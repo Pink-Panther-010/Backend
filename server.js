@@ -10,6 +10,13 @@ app.get('/', (req, res) => {
   res.send('Backend Says Hello!')
 })
 
+
+app.get('/:path', (req, res) => {
+  res.send(req.params.path)
+})
+
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
