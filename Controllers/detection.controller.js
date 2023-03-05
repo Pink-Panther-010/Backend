@@ -19,7 +19,7 @@ const addDetection = (req, res) => {
         const detection = { locX: sensor.locX, locY: sensor.locY, time: new Date() }
         detectionService.createDetection(detection, profile.id);
 
-        res.status(201);
+        res.sendStatus(201);
     } catch (err) {
         res.status(500).send("there was a problem" + err.massage);
     }
