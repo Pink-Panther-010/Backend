@@ -1,7 +1,6 @@
-const getSuspectsById = ((req, res) => {});
-const getSuspect = (( req,res) => {});
+const suspectService = require('../Services/suspectService');
 
-module.exports = {
-    getSuspect,
-    getSuspectsById
+
+exports.getSuspect = (req,res) =>{
+  req.params.id? res.send(suspectService.findSuspectById(req.params.id)):res.send(suspectService.findAllSuspects());
 }
