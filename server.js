@@ -1,19 +1,38 @@
 const express = require('express')
 const app = express()
+const detectionRouter = require('./routes/detection.routes');
+const profileRoutes = require('./routes/profile');
+const suspectRoutes = require('./routes/suspects.routes');
 const port = 3000
+const mongoose = require("mongoose");
+const dbConfig = require('./config/db.config')
+const db = require("./models/db");
 var cors = require('cors');
 app.use(cors());
-
-
+//app.use(dbConfig); CONNECT CORRECTLY
+app.use('/detections', detectionRouter);
+app.use('/profile',profileRoutes);
+app.use('/suspects',suspectRoutes);
 app.get('/', (req, res) => {
   console.log('Called')
   res.send('Backend Says Hello!')
 })
 
 
-app.get('/:path', (req, res) => {
-  res.send(req.params.path)
-})
+db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => {
+    console.log("Connected to the database!");
+  })
+  .catch(err => {
+    console.log("Cannot connect to the database!", err);
+    process.exit();
+  });
+
+
 
 
 
