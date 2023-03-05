@@ -1,10 +1,6 @@
 const suspectService = require('../Services/suspectService');
 
 
-exports.findAll = (req, res) => {
-    res.send(suspectService.findAllSuspects());
-};
-
-exports.findById = (req, res) => {
-    res.send(suspectService.findSuspectById(req.params.id));
-};
+exports.getSuspect = (req,res) =>{
+  req.params.id? res.send(suspectService.findSuspectById(req.params.id)):res.send(suspectService.findAllSuspects());
+}
