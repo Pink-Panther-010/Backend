@@ -8,7 +8,7 @@ const dbConfig = require('./config/db.config')
 var cors = require('cors');
 app.use(cors());
 //app.use(dbConfig); CONNECT CORRECTLY
-app.use('/detection', detectionRouter);
+app.use('/detections', detectionRouter);
 app.use('/profile', profileRouter);
 app.use('/suspect', suspectRouter);
 
@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/:path', (req, res) => {
-  res.send(req.params.path)
-})
+// app.get('/:path', (req, res) => {
+//   res.send(req.params.path)
+// })
 
 
 
