@@ -13,4 +13,4 @@ const addDetection = () => {
 module.exports = {
     getAllDetections,
     getDetectionsById,
-    addDetection,
+    addDetection}
