@@ -1,4 +1,4 @@
-const db = require("../db/db");
+const db = require("../models/db");
 const Profile = db.profiles;
 
 const { ObjectId } = require('mongodb');
@@ -14,13 +14,15 @@ const { ObjectId } = require('mongodb');
 //   };
   
 
-  exports.getProfileById= async (id) => {
+  exports.getProfileById= (req, res) => {
     const id = req.params.id;
     Profile.findById(id)
       .then(data => {
-        if (!data)
+        if (!data) {
           res.status(404).send({ message: "Not found Profile with id " + id });
-        else res.send(data);
+        } else {
+            res.send(data);
+        }
       })
       .catch(err => {
         res
@@ -29,9 +31,11 @@ const { ObjectId } = require('mongodb');
       });
   };
  
-  exports.getProfileByLicensePlate= async (licensePlate) => {
+  exports.getProfileByLicensePlate= (req, res) => {
     const licensePlate = req.params.licensePlate;
-    Profile.findByLicensePlate(licensePlate)
+    var condition = licensePlate ? { license_plate: licensePlate } : {};
+
+    Profile.findByLicensePlate(condition)
       .then(data => {
         if (!data)
           res.status(404).send({ message: "Not found Profile with license Plate " + licensePlate });
