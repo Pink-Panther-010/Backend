@@ -16,7 +16,7 @@ exports.getProfileById= async (id) => {
       .get()
       .collection("profiles")
       .findOne({
-        "licensePlate": licensePlate
+        "license_plates": licensePlate
       })
       
   };
