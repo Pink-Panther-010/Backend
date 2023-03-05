@@ -2,8 +2,10 @@ const express = require('express')
 const app = express()
 const detectionRouter = require('@/routes/detection.routes.js');
 const port = 3000
+const dbConfig = require('@/config/db.config')
 var cors = require('cors');
 app.use(cors());
+app.use(dbConfig);
 app.use('/detection', detectionRouter);
 
 app.get('/', (req, res) => {
