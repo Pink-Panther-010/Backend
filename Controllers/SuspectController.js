@@ -1,5 +1,5 @@
 const getSuspectsById = ((req, res) => {});
-const getSuspect = (( res) => {});
+const getSuspect = (( req,res) => {});
 
 module.exports = {
     getSuspect,
