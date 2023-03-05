@@ -9,7 +9,7 @@ const getProfileByLicenseNumber = (req, res) => {
 };
 
 const getProfilesByDangerLevel = (req, res) => {
-    res.send(profileService.getProfilesByDangerLevel(req.params.licenceNumber));
+    res.send(profileService.getProfilesByDangerLevel(req.params.dangerLevel));
 };
 
 module.exports = {
