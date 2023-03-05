@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const detectionRouter = require('@/routes/detection.routes.js');
+const detectionRouter = require('@/routes/detections.routes.js');
 const port = 3000
 const dbConfig = require('@/config/db.config')
 var cors = require('cors');
