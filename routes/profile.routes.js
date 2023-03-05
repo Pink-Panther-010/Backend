@@ -3,8 +3,8 @@ const controllerProfile = require('../controllers/ProfileController');
 
 const router = new express.Router();
 
-router.get('/profile/:id/', controllerProfile.getProfile);
-router.get('/profile/:licenseNumber/', controllerProfile.getProfile);
-router.get('/profile/:dangerLevel', controllerProfile.getProfile);
+router.get('/id/:id/', controllerProfile.getProfileById);
+router.get('/licenseNumber/:licenseNumber/', controllerProfile.getProfilesByLicenseNumber);
+router.get('/dangerLevel/:dangerLevel', controllerProfile.getProfilesByDangerLevel);
 
 module.exports = router;
