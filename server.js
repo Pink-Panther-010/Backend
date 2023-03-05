@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 var cors = require('cors');
 app.use(cors());
-const suscpect = require('./routes/SuspectController');
+
 
 app.get('/', (req, res) => {
   console.log('Called')
@@ -15,7 +15,6 @@ app.get('/:path', (req, res) => {
   res.send(req.params.path)
 })
 
-app.use("suspects", suscpect);
 
 
 
