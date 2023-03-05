@@ -6,7 +6,7 @@ const suspectRoutes = require('./routes/suspects.routes');
 const port = 3000
 const mongoose = require("mongoose");
 const dbConfig = require('./config/db.config')
-const db = require("./models/db");
+const db = require("./models/db.models");
 var cors = require('cors');
 app.use(cors());
 //app.use(dbConfig); CONNECT CORRECTLY

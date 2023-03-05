@@ -1,4 +1,4 @@
-const suspectModel = require("../models/SuspectModel");
+const suspectModel = require("../models/suspect.models");
 
 exports.findAllSuspects = () => {
     suspectModel.findAll()
