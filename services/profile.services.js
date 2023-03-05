@@ -1,4 +1,4 @@
-const db = require("../models/db");
+const db = require("../models/db.models");
 const Profile = db.profiles;
 
 const { ObjectId } = require('mongodb');
