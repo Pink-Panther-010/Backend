@@ -2,9 +2,9 @@ const suspectService = require('../Services/suspectService');
 
 
 exports.findAll = (req, res) => {
-    res.send(suspectService.findAll());
+    res.send(suspectService.findAllSuspects());
 };
 
 exports.findById = (req, res) => {
-    res.send(suspectService.findById(req.params.id));
+    res.send(suspectService.findSuspectById(req.params.id));
 };
