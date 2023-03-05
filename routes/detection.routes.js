@@ -15,6 +15,6 @@ router.get('/:id?', (req, res) => {
     res.send(detections);
 });
 
-router.post('', detectionController.addDetection);
+router.post('/', detectionController.addDetection);
 
 module.exports = router;
