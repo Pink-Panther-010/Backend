@@ -5,7 +5,7 @@ const getSensorById = (id) => {
     try {
         return sensors.findOne({ id: id });
     } catch (err) {
-        console.log("There was a problem finding the sensor" + err.massage)
+        console.log("There was a problem finding the sensor" + err.message)
     }
 }
 
