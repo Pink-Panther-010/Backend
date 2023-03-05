@@ -1,5 +1,19 @@
-const getProfile = (req, res) => {};
+const profileService = require('../Services/profile.services.js')
+
+const getProfileById = (req, res) => {
+    res.send(profileService.getProfileById(req.params.id));
+};
+
+const getProfileByLicenseNumber = (req, res) => {
+    res.send(profileService.getProfileByLicensePlate(req.params.licenceNumber));
+};
+
+const getProfilesByDangerLevel = (req, res) => {
+    res.send(profileService.getProfilesByDangerLevel(req.params.licenceNumber));
+};
 
 module.exports = {
-    getProfile
-}
+    getProfileById,
+    getProfileByLicenseNumber,
+    getProfilesByDangerLevel,
+    }
