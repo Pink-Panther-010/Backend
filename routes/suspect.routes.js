@@ -1,5 +1,5 @@
 const express = require('express');
-const controllerSuspect = require('@/Controllers/SuspectController');
+const controllerSuspect = require('../controllers/suspect.controller');
 
 const router = new express.Router();
 
@@ -20,4 +20,4 @@ router.get('/suspects/:id?', (req, res) => {
 */
 module.exports = router;
 
-router.get('suspects/:id?',controllerSuspect.getSuspect)
+router.get('suspects/:id?', controllerSuspect.getSuspect)

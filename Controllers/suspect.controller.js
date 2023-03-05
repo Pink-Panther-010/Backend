@@ -1,4 +1,4 @@
-const suspectService = require('../Services/suspectService');
+const suspectService = require('../services/suspect.service');
 
 
 exports.getSuspect = (req,res) =>{
