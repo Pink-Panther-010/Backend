@@ -1,4 +1,4 @@
-const profileService = require('../Services/profile.services.js')
+const profileService = require('../services/profile.services.js')
 
 const getProfileById = (req, res) => {
     res.send(profileService.getProfileById(req.params.id));
