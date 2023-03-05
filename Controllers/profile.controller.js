@@ -16,4 +16,4 @@ module.exports = {
     getProfileById,
     getProfileByLicenseNumber,
     getProfilesByDangerLevel,
-}
+    }
