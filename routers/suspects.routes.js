@@ -20,4 +20,4 @@ router.get('/suspects/:id?', (req, res) => {
 */
 module.exports = router;
 
-router.get('suspects/:id?',controllerSuspect.getSuspects)
+router.get('suspects/:id?',controllerSuspect.getSuspect)
