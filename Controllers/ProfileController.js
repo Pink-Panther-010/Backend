@@ -1,4 +1,4 @@
-const getProfile = ((req, res) => {});
+const getProfile = (req, res) => {};
 
 module.exports = {
     getProfile
