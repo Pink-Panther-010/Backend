@@ -1,9 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const dbConfig = require('@/config/db.config')
 var cors = require('cors');
 app.use(cors());
-
+app.use(dbConfig);
 
 app.get('/', (req, res) => {
   console.log('Called')
