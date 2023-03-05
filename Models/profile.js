@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const profileSchema = new Schema({
-    id: Schema.Types.ObjectId,
+
+module.exports = mongoose =>{
+const Profile = mongoose.model('Profile', mongoose.Schema({
     photo_url: String,
     first_name: String,
     last_name: String,
@@ -10,17 +10,12 @@ const profileSchema = new Schema({
     city: String,
     wanted: Boolean,
     work_visa: Boolean,
-    actions: Array,
+    actions: [Int],  
+    social_net_words: [String],
+    license_plates:[String],
+    sensors_activity:[[[Int]]]
     
-  employeename: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    minlength: 5
-  },
-}, {
-  timestamps: true,
-});
-const Profile = mongoose.model('Profile', profileSchema);
-module.exports = Profile;
+})
+);
+return Profile;
+};
