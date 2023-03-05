@@ -3,8 +3,17 @@ const controllerSuspect = require('@/Controllers/SuspectController');
 
 const router = new express.Router();
 
-router.get('/suspects', controllerSuspect.getSuspect);
+router.get('/suspects/:id?', (req, res) => {
+    const id = req.params.id;
+    let suspect;
 
-router.get('/suspects/:id', controllerSuspect.getSuspect(id));
+    if(!id) {
+        suspect = controllerSuspect.getSuspects();
+    } else{
+        suspect = controllerSuspect.getSuspectsById();
+    }
+
+    res.send(suspect)
+})
 
 module.exports = router;
