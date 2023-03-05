@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
-const detectionRouter = require('@/routes/detections.routes.js');
+const detectionRouter = require('./routes/detection.routes');
 const port = 3000
-const dbConfig = require('@/config/db.config')
+const dbConfig = require('./config/db.config')
 var cors = require('cors');
 app.use(cors());
-app.use(dbConfig);
+//app.use(dbConfig); CONNECT CORRECTLY
 app.use('/detection', detectionRouter);
 
 app.get('/', (req, res) => {

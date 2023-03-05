@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const detectionController = require('../controllers/detections.controller')
+const detectionController = require('../controllers/detection.controller')
 
 router.get('/:id?', (req, res) => {
     const id = req.params.id;
