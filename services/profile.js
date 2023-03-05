@@ -33,13 +33,13 @@ const { ObjectId } = require('mongodb');
  
   exports.getProfileByLicensePlate= (req, res) => {
     const licensePlate = req.params.licensePlate;
-    var condition = licensePlate ? { license_plate: licensePlate } : {};
-
-    Profile.findByLicensePlate(condition)
+    Profile.find(licensePlate ? { license_plate: licensePlate } : {})
       .then(data => {
-        if (!data)
+        if (!data) {
           res.status(404).send({ message: "Not found Profile with license Plate " + licensePlate });
-        else res.send(data);
+         } else {
+            res.send(data);
+         }
       })
       .catch(err => {
         res
