@@ -11,11 +11,14 @@ exports.getAllDetections = async () => {
 };
 
 exports.createDetection = async (data, id) => {
-    const newDetection = new detectionModel(...data);
+    const newDetection = new detectionModel({...data});
 
     if (detectionModel.find({_id: id}) !== undefined) {
         detectionModel.updateOne({_id: id}, {$push: {detections: newDetection}});
     } else {
+        console.log('====================================');
+        console.log(newDetection);
+        console.log('====================================');
         newDetection.save();
     }
     

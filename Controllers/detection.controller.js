@@ -27,6 +27,10 @@ const addDetection = async (req, res) => {
         //TODO: Store suspect in DB if danger level > threshold
         const sensor = await sensorsService.getSensorById(req.body.sensorId);
         const detection = { xLocation: sensor.location_x, yLocation: sensor.location_y, time: new Date() }
+        console.log('====================================');
+        console.log(sensor);
+        console.log(detection)
+        console.log('====================================');
          detectionService.createDetection(detection, profile.id);
 
         res.sendStatus(201);

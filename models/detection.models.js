@@ -12,7 +12,7 @@ var detectionsSchema = new Schema({
         yLocation: Number,
         time: Date
     },{timestamps: true}]
-});
+},{collation:'detections'});
 
 module.exports = connectionMedori.model('detections', detectionsSchema);
 
