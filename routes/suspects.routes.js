@@ -5,4 +5,4 @@ const router = new express.Router();
 
 module.exports = router;
 
-router.get('suspects/:id?',controllerSuspect.getSuspect)
+router.get('/:id?',controllerSuspect.getSuspect)

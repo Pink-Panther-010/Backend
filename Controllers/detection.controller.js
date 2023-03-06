@@ -2,11 +2,11 @@ const profileService = ('../services/profile.js');
 const detectionService = ('../services/detections.services.js');
 const sensorsService = ('../services/sensors.services.js');
 
-const getAllDetections = () => {
+const getAllDetections = (req, res) => {
 
 }
 
-const getDetectionsById = (id) => {
+const getDetectionsById = (req, res) => {
 
 }
 
