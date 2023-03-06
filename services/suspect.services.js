@@ -5,9 +5,8 @@ exports.findAllSuspects = async () => {
   if(data === undefined) {
     throw new Error("No suspect found");
   }
-  else {
+
     return data;
-  }
 }
 
 

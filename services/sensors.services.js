@@ -1,15 +1,10 @@
 const sensors = require ("../models/sensors.models")
 
-const getSensorById = (id) => {
-    sensors.findById(id)
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => {
-      console.log(err.message + "Error retrieving Profile with id=" + id);
-    });
-}
+exports.getSensorById = async (id) => {
+    await sensors.findById(id)
+    if(data === undefined) {
+      throw new Error("Error retrieving Profile with id=" + id);
+    }
 
-module.exports = {
-    getSensorById
+      return data;
 }
