@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express()
-const detectionRouter = require('./routes/detection.routes');
-const profileRoutes = require('./routes/profile.routes');
-const suspectRoutes = require('./routes/suspects.routes');
-const sensorRoute = require('./routes/sensor.routes');
+const detectionRouter = require('./src/routes/detection.routes');
+const profileRoutes = require('./src/routes/profile.routes');
+const suspectRoutes = require('./src/routes/suspects.routes');
+const sensorRoute = require('./src/routes/sensor.routes');
 const port = 3000
 const mongoose = require("mongoose");
-const db = require("./models/db.models");
-const dbMedori = require("./models/dbMedori.models");
+const db = require("./src/models/db.models");
+const dbMedori = require("./src/models/dbMedori.models");
 var cors = require('cors');
 app.use(cors());
 
