@@ -1,6 +1,6 @@
-const detectionModel = require('../models/detectionModel');
+const detectionModel = require('../models/detection.models');
 
-exports.getDetections = async () => {
+exports.getAllDetections = async () => {
     return await detectionModel.findById().sort({'time': 'asc'})
 };
 
@@ -13,4 +13,8 @@ exports.createDetection = async (data, id) => {
         newDetection.save();
     }
     
+};
+
+exports.getDetectionsById = async () => {
+
 };
