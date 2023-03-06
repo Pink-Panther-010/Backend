@@ -1,7 +1,7 @@
 const suspectModel = require("../models/suspect.models");
 
 exports.findAllSuspects = () => {
-    suspectModel.findAll()
+    suspectModel.find({})
       .then(data => {
         return data;
       })
