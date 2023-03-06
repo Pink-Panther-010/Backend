@@ -6,7 +6,8 @@ module.exports = mongoose => {
             xLocation: Number,
             yLocation: Number,
             time: Date
-        }]
+        },
+        { timestamps: true }]
     })
     );
     return Detection;
