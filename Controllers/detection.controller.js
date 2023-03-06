@@ -1,13 +1,21 @@
-const profileService = ('../services/profile.js');
-const detectionService = ('../services/detections.services.js');
-const sensorsService = ('../services/sensors.services.js');
+const profileService = require('../services/profile.services.js');
+const detectionService = require('../services/detections.services.js');
+const sensorsService = require('../services/sensors.services.js');
 
-const getAllDetections = (req, res) => {
-
+const getAllDetections = async (req, res) => {
+    try {
+        res.send(detectionService.getAllDetections());
+    } catch (err) {
+        res.status(500).send(`There was a problem - ${err.message}`)
+    }
 }
 
 const getDetectionsById = (req, res) => {
-
+    try {
+        res.send(detectionService.getDetectionsById(req.params.id));
+    } catch (err) {
+        res.status(500).send(`There was a problem - ${err.message}`)
+    }
 }
 
 const addDetection = (req, res) => {
@@ -21,7 +29,7 @@ const addDetection = (req, res) => {
 
         res.sendStatus(201);
     } catch (err) {
-        res.status(500).send("there was a problem" + err.massage);
+        res.status(500).send(`There was a problem - ${err.message}`);
     }
 }
 
