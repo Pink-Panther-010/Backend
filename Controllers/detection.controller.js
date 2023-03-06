@@ -18,8 +18,10 @@ const getDetectionsById = async (req, res) => {
     }
 }
 
-const addDetection = (req, res) => {
-    try {
+const addDetection = async (req, res) => {
+    try {console.log("fdfdffdsfds")
+        console.log(req.body)
+
         const profile = await profileService.getProfileByLicensePlate(req.body.license_plate);
         //TODO: Retrieve User's danger level via BI team
         //TODO: Store suspect in DB if danger level > threshold

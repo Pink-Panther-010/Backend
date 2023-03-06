@@ -10,6 +10,10 @@ const db = require("./models/db.models");
 const dbMedori = require("./models/dbMedori.models");
 var cors = require('cors');
 app.use(cors());
+
+app.use(express.json())
+app.use(express.urlencoded())
+
 //app.use(dbConfig); CONNECT CORRECTLY
 app.use('/detections', detectionRouter);
 app.use('/profile',profileRoutes);

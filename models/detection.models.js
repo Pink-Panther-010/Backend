@@ -1,5 +1,5 @@
 
-const dbMedori = require('./models/dbMedori.models')
+const dbMedori = require('./dbMedori.models')
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
