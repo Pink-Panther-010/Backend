@@ -24,7 +24,7 @@ const addDetection = (req, res) => {
         //TODO: Retrieve User's danger level via BI team
         //TODO: Store suspect in DB if danger level > threshold
         const sensor = sensorsService.findById(req.body.sensorId);
-        const detection = { locX: sensor.locX, locY: sensor.locY, time: new Date() }
+        const detection = { xLocation: sensor.location_x, yLocation: sensor.location_y, time: new Date() }
         detectionService.createDetection(detection, profile.id);
 
         res.sendStatus(201);
