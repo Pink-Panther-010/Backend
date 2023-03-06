@@ -20,12 +20,12 @@ const getDetectionsById = async (req, res) => {
 
 const addDetection = (req, res) => {
     try {
-        const profile = profileService.getProfileByLicensePlate(req.body.license_plate);
+        const profile = await profileService.getProfileByLicensePlate(req.body.license_plate);
         //TODO: Retrieve User's danger level via BI team
         //TODO: Store suspect in DB if danger level > threshold
-        const sensor = sensorsService.findById(req.body.sensorId);
+        const sensor = await sensorsService.findById(req.body.sensorId);
         const detection = { xLocation: sensor.location_x, yLocation: sensor.location_y, time: new Date() }
-        detectionService.createDetection(detection, profile.id);
+         detectionService.createDetection(detection, profile.id);
 
         res.sendStatus(201);
     } catch (err) {

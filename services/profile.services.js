@@ -20,7 +20,7 @@ catch(err){
 };
 
 exports.getProfileByLicensePlate = async (licensePlate) => {
-  const respond = await Profile.find(licensePlate ? { license_plate: licensePlate } : {})
+  const respond = await Profile.find(licensePlate ? { license_plates: [licensePlate] } : {})
   if( respond === undefined) {
     throw new Error("Profile not found");
   }
