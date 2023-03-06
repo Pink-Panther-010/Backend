@@ -1,8 +1,8 @@
 const profileService = require('../services/profile.services.js')
 
-const getProfileById = (req, res) => {
+const getProfileById = async(req, res) => {
     try{
-    res.send(profileService.getProfileById(req.params.id));
+    res.send(await profileService.getProfileById(req.params.id));
     }catch(err){
         res.status(500).send(err);
     }

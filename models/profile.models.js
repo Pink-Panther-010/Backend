@@ -19,11 +19,14 @@
 // );
 // return Profile;
 // };
-
-const { connection } = require('../server');
+const mongoose = require('mongoose')
+const db = require('../models/db.models')
 var Schema = mongoose.Schema;
 
+ const connection =  mongoose.createConnection(db.url);
+
 var populationSchema = new Schema({
+    _id: String,
     photo_url: String,
     first_name: String,
     last_name: String,
@@ -36,6 +39,7 @@ var populationSchema = new Schema({
     social_net_words: [String],
     license_plates:[String],
     sensors_activity:[[[Number]]]
-});
+},{collection: 'population'});
 
-module.exports = connection.model('population', populationSchema)
+console.log(connection)
+module.exports =  connection.model('population', populationSchema)

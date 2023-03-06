@@ -1,4 +1,4 @@
-const sensors = require ("../models/sensors.models")
+const sensors = require ("../models/sensor.models")
 
 exports.getSensorById = async (id) => {
     await sensors.findById(id)

@@ -3,6 +3,7 @@ const app = express()
 const detectionRouter = require('./routes/detection.routes');
 const profileRoutes = require('./routes/profile.routes');
 const suspectRoutes = require('./routes/suspects.routes');
+const sensorRoute = require('./routes/sensor.routes');
 const port = 3000
 const mongoose = require("mongoose");
 const db = require("./models/db.models");
@@ -13,6 +14,7 @@ app.use(cors());
 app.use('/detections', detectionRouter);
 app.use('/profile',profileRoutes);
 app.use('/suspects',suspectRoutes);
+app.use('/sensors',sensorRoute);
 app.get('/', (req, res) => {
   console.log('Called')
   res.send('Backend Says Hello!')

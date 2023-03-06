@@ -12,7 +12,7 @@
 //     return Detection;
 // };
 
-const dbMedori = require('../models/dbMedori.models')
+const dbMedori = require('./models/dbMedori.models')
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

@@ -10,15 +10,6 @@ exports.findAllSuspects = async () => {
 }
 
 
-// exports.findAllSuspects = async () => {
-//     suspectModel.find({})
-//       .then((data) => {
-//         return data;
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       });
-//   };
 
   exports.findSuspectById = async (id) => {
    const data = await suspectModel.findById(id)

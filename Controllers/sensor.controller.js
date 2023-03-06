@@ -1,6 +1,6 @@
-const sensorService = require('../services/sensor.services');
+const sensorService = require('../services/sensors.services');
 
-exports.getSuspect = async (req,res) =>{
+exports.getSensor = async (req,res) =>{
   try{
     res.send(await sensorService.getSensorById(req.params.id));
   } catch(error){

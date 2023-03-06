@@ -1,4 +1,4 @@
-const detectionModel = require('../models/detection.models');
+const detectionModel = require('../detection.models');
 
 exports.getAllDetections = async () => {
     const data = await detectionModel.find();
