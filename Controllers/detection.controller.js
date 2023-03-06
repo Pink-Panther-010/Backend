@@ -19,20 +19,14 @@ const getDetectionsById = async (req, res) => {
 }
 
 const addDetection = async (req, res) => {
-    try {console.log("fdfdffdsfds")
-        console.log(req.body)
+    try {
 
         const profile = await profileService.getProfileByLicensePlate(req.body.license_plate);
         //TODO: Retrieve User's danger level via BI team
         //TODO: Store suspect in DB if danger level > threshold
         const sensor = await sensorsService.getSensorById(req.body.sensorId);
         const detection = { xLocation: sensor.location_x, yLocation: sensor.location_y, time: new Date() }
-        console.log('====================================');
-        console.log(sensor);
-        console.log(detection)
-        console.log('====================================');
-         detectionService.createDetection(detection, profile.id);
-
+        await detectionService.createDetection(detection, profile._id);
         res.sendStatus(201);
     } catch (err) {
         res.status(500).send(`There was a problem - ${err.message}`);

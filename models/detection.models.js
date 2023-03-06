@@ -11,8 +11,8 @@ var detectionsSchema = new Schema({
         xLocation: Number,
         yLocation: Number,
         time: Date
-    },{timestamps: true}]
-},{collation:'detections'});
+    }, { _id: false }]
+},{collection:'detections'});
 
 module.exports = connectionMedori.model('detections', detectionsSchema);
 

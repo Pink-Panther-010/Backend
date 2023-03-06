@@ -12,7 +12,7 @@ var cors = require('cors');
 app.use(cors());
 
 app.use(express.json())
-app.use(express.urlencoded())
+// app.use(express.urlencoded())
 
 //app.use(dbConfig); CONNECT CORRECTLY
 app.use('/detections', detectionRouter);
@@ -20,27 +20,12 @@ app.use('/profile',profileRoutes);
 app.use('/suspects',suspectRoutes);
 app.use('/sensors',sensorRoute);
 app.get('/', (req, res) => {
-  console.log('Called')
   res.send('Backend Says Hello!')
 })
 
 const connection =  mongoose.createConnection(db.url);
 const connectionMadori =  mongoose.createConnection(dbMedori.url);
 
-
-
-// db.mongoose
-//   .connect(db.url, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   })
-//   .then(() => {
-//     console.log("Connected to the database!");
-//   })
-//   .catch(err => {
-//     console.log("Cannot connect to the database!", err);
-//     process.exit();
-//   });
 module.exports = {
   connection,
   connectionMadori

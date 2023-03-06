@@ -41,5 +41,4 @@ var populationSchema = new Schema({
     sensors_activity:[[[Number]]]
 },{collection: 'population'});
 
-console.log(connection)
 module.exports =  connection.model('population', populationSchema)
