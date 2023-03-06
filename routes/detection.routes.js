@@ -2,18 +2,9 @@ const express = require('express')
 const router = express.Router()
 const detectionController = require('../controllers/detection.controller')
 
-router.get('/:id?', (req, res) => {
-    const id = req.params.id;
-    let detections = null;
+router.get('/', detectionController.getAllDetections);
 
-    if(!id) {
-        detections = detectionController.getAllDetections();
-    } else {
-        detections = detectionController.getDetectionsById(id);
-    }
-
-    res.send(detections);
-});
+router.get('/:id', detectionController.getDetectionsById);
 
 router.post('/', detectionController.addDetection);
 
