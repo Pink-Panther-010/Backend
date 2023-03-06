@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const detectionRouter = require('./routes/detection.routes');
-const profileRoutes = require('./routes/profile');
+const profileRoutes = require('./routes/profile.routes');
 const suspectRoutes = require('./routes/suspects.routes');
 const port = 3000
 const mongoose = require("mongoose");
-const db = require("./models/db");
+const db = require("./models/db.models");
 const dbMedori = require("./models/dbMedori.models");
 var cors = require('cors');
 app.use(cors());
@@ -17,8 +17,10 @@ app.get('/', (req, res) => {
   console.log('Called')
   res.send('Backend Says Hello!')
 })
-const connection = mongoose.createConnection(db.url);
-const connectionMadori = mongoose.createConnection(dbMedori.url);
+
+const connection =  mongoose.createConnection(db.url);
+const connectionMadori =  mongoose.createConnection(dbMedori.url);
+
 
 
 // db.mongoose
