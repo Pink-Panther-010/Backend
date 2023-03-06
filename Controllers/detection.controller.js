@@ -4,15 +4,18 @@ const sensorsService = require('../services/sensors.services.js');
 
 const getAllDetections = async (req, res) => {
     try {
-        const detections = detectionService.getAllDetections()
-        res.send(detections);
+        res.send(detectionService.getAllDetections());
     } catch (err) {
         res.status(500).send(`There was a problem - ${err.message}`)
     }
 }
 
 const getDetectionsById = (req, res) => {
-
+    try {
+        res.send(detectionService.getDetectionsById(req.params.id));
+    } catch (err) {
+        res.status(500).send(`There was a problem - ${err.message}`)
+    }
 }
 
 const addDetection = (req, res) => {
