@@ -12,8 +12,11 @@
 //     return Detection;
 // };
 
+const dbMedori = require('../models/dbMedori.models')
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
+const connectionMedori = mongoose.createConnection(dbMedori.url);
 
 var detectionsSchema = new Schema({
     detections: [{
@@ -23,5 +26,5 @@ var detectionsSchema = new Schema({
     }]
 });
 
-module.exports = mongoose.model('detections', detectionsSchema)
+module.exports = connectionMedori.model('detections', detectionsSchema);
 
