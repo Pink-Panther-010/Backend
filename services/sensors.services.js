@@ -1,19 +1,12 @@
-const db = require("../models/db");
-const sensors = db.sensors;
+const sensors = require ("../models/sensors.models")
 
 const getSensorById = (id) => {
     sensors.findById(id)
-    .then(data => {
-      if (!data) {
-        res.status(404).send({ message: "Not found Profile with id " + id });
-      } else {
-        return data;
-      }
+    .then((data) => {
+      return data;
     })
-    .catch(err => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Profile with id=" + id });
+    .catch((err) => {
+      console.log(err.message + "Error retrieving Profile with id=" + id);
     });
 }
 
