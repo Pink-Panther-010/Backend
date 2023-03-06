@@ -1,4 +1,4 @@
-// const mongoose = require('mongoose');
+
 
 // module.exports = mongoose =>{
 // const Profile = mongoose.model('population', mongoose.Schema({
@@ -20,7 +20,7 @@
 // return Profile;
 // };
 
-var mongoose = require('mongoose');
+const { connection } = require('../server');
 var Schema = mongoose.Schema;
 
 var populationSchema = new Schema({
@@ -38,4 +38,4 @@ var populationSchema = new Schema({
     sensors_activity:[[[Number]]]
 });
 
-module.exports = mongoose.model('population', populationSchema)
+module.exports = connection.model('population', populationSchema)

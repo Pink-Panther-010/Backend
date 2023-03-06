@@ -1,8 +1,13 @@
 const suspectModel = require("../models/suspect.models");
 
 exports.findAllSuspects = async () => {
-  const data = await suspectModel.find();
-  return data;
+  const data =  await suspectModel.find();
+  if(data === undefined) {
+    throw new Error("No suspect found");
+  }
+  else {
+    return data;
+  }
 }
 
 
@@ -17,11 +22,11 @@ exports.findAllSuspects = async () => {
 //   };
 
   exports.findSuspectById = async (id) => {
-    suspectModel.findById(id)
-      .then(data => {
-        return data;
-      })
-      .catch(err => {
-        console.log(err);
-      });
+   const data = await suspectModel.findById(id)
+   if(data === undefined) {
+    throw new Error("No suspect found");
+   }
+   else {
+    return data;
+   }
   };
