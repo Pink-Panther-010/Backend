@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports = mongoose =>{
-const Profile = mongoose.model('Profile', mongoose.Schema({
+const Profile = mongoose.model('population', mongoose.Schema({
     photo_url: String,
     first_name: String,
     last_name: String,
