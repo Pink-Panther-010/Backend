@@ -1,7 +1,9 @@
 const detectionModel = require('../models/detection.models');
+const AMOUNT = 5;
 
-exports.getAllDetections = async () => {
-    const data = await detectionModel.find({});
+exports.getAllDetections = async (offset) => {
+    const data = await detectionModel.find({}).skip(AMOUNT * offset)
+    .limit( AMOUNT ).sort({ time: '-date'});;
 
     if(data === undefined) {
         throw new Error('No detections were found');
@@ -16,8 +18,9 @@ exports.createDetection = async (data) => {
         await newDetectiobModel.save();
 };
 
-exports.getDetectionsById = async (id) => {
-    const data = await detectionModel.findById({_id: id});
+exports.getDetectionsById = async (id, offset) => {
+    const data = await detectionModel.findById({_id: id}).skip(AMOUNT * offset)
+    .limit( AMOUNT ).sort({ time: '-date' });
 
     if(data === undefined) {
         throw new Error(`No detections were found for ID ${id}`);

@@ -6,20 +6,28 @@ const hostConfig = require("../config/host.config");
 const axios = require("axios");
 
 const getAllDetections = async (req, res) => {
-  try {
-    res.send(await detectionService.getAllDetections());
-  } catch (err) {
-    res.status(500).send(`There was a problem - ${err.message}`);
-  }
-};
+    let offset = parseInt(req.params.offset);
+        if(!offset) {
+            offset = 0;
+        }
+    try {
+        res.send(await detectionService.getAllDetections(offset));
+    } catch (err) {
+        res.status(500).send(`There was a problem - ${err.message}`)
+    }
+}
 
 const getDetectionsById = async (req, res) => {
-  try {
-    res.send(await detectionService.getDetectionsById(req.params.id));
-  } catch (err) {
-    res.status(500).send(`There was a problem - ${err.message}`);
-  }
-};
+    let offset = parseInt(req.params.offset);
+        if(!offset) {
+            offset = 0;
+        }
+    try {
+        res.send(await detectionService.getDetectionsById(req.params.id, offset));
+    } catch (err) {
+        res.status(500).send(`There was a problem - ${err.message}`)
+    }
+}
 
 const addDetection = async (req, res) => {
   try {
