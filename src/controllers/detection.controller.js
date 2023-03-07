@@ -35,17 +35,22 @@ const addDetection = async (req, res) => {
       req.body.license_plate
     );
     const url = `${hostConfig.dangerLevelById}/${profile._id}`;
-    const dangerLevel = await axios.get("https://" + url, { 
-      headers: { 'Authorization': hostConfig.token } })
-      console.log('====================================');
-      console.log(dangerLevel);
-      console.log('====================================');
-    //const dangerLevel = 3
+    // const dangerLevel = await axios.get("https://" + url, { 
+    //   headers: { 'Authorization': hostConfig.token } })
+    //   console.log('====================================');
+    //   console.log(dangerLevel);
+    //   console.log('====================================');
+    const dangerLevel = 2
+    if(!await suspectService.findSuspectById(profile._id)){
+        await suspectService.createSuspect({
+            _id: profile._id,
+            danger_level: dangerLevel,
+          });
+    }
+    else{
+        await suspectService.updateSuspect(profile._id,dangerLevel);
+    }
 
-    await suspectService.createSuspect({
-      _id: profile._id,
-      danger_level: dangerLevel,
-    });
     const sensor = await sensorsService.getSensorById(req.body.sensorId);
     const detection = {
       id: profile._id,
