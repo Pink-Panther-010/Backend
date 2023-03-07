@@ -27,6 +27,6 @@ exports.findAllSuspects = async () => {
     await newSuspect.save();
     }
     catch(err) {
-      throw new Error(err.massage);
+      throw new Error(err.message);
     }
   }
