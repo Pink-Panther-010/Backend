@@ -7,12 +7,12 @@ const connectionMedori = mongoose.createConnection(dbMedori.url);
 
 var detectionsSchema = new Schema({
     _id: String,
-    detections: [{
-        xLocation: Number,
-        yLocation: Number,
-        time: Date
-    }, { _id: false }]
-},{collection:'detections'});
+    detectedLicense_plate: String,
+    xLocation: Number,
+    yLocation: Number,
+    time: Date
+
+}, { collection: 'detections' });
 
 module.exports = connectionMedori.model('detections', detectionsSchema);
 

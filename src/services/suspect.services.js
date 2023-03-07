@@ -20,3 +20,13 @@ exports.findAllSuspects = async () => {
     return data;
    }
   };
+
+  exports.createSuspect = async (suspect) => {
+    try{
+    const newSuspect = new suspectModel(suspect);
+    await newSuspect.save();
+    }
+    catch(err) {
+      throw new Error(err.massage);
+    }
+  }

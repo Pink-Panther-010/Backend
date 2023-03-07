@@ -5,4 +5,4 @@ const router = new express.Router();
 
 module.exports = router;
 
-router.get('/:id?',controllerSensor.getSensor)
+router.get('/id/:id?',controllerSensor.getSensor)

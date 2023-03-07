@@ -15,3 +15,12 @@ exports.getSuspect = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 }
+
+exports.createSuspect = async (req, res) => {
+  try {
+    res.send(await suspectService.createSuspect(req.body));
+  }
+  catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};

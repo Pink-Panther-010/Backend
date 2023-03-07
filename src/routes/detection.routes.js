@@ -4,7 +4,7 @@ const detectionController = require("../controllers/detection.controller")
 
 router.get('/', detectionController.getAllDetections);
 
-router.get('/:id', detectionController.getDetectionsById);
+router.get('/id/:id', detectionController.getDetectionsById);
 
 router.post('/', detectionController.addDetection);
 
