@@ -3,7 +3,7 @@ const detectionService = require("../services/detections.services.js");
 const sensorsService = require("../services/sensors.services.js");
 const suspectService = require("../services/suspect.services.js");
 const hostConfig = require("../config/host.config");
-const axios = require("axios");
+const superagent = require("superagent");
 
 const getAllDetections = async (req, res) => {
     let offset = parseInt(req.params.offset);
@@ -35,12 +35,15 @@ const addDetection = async (req, res) => {
       req.body.license_plate
     );
     const url = `${hostConfig.dangerLevelById}/${profile._id}`;
-    // const dangerLevel = await axios.get("https://" + url, { 
-    //   headers: { 'Authorization': hostConfig.token } })
-    //   console.log('====================================');
-    //   console.log(dangerLevel);
-    //   console.log('====================================');
-    const dangerLevel = 2
+    const dangerLevel = await superagent.get("https://" + url).set('authorize',hostConfig.token)
+    console.log('====================================');
+    console.log(dangerLevel.body);
+    console.log('====================================');
+      //  headers: ({ 'Authorization': hostConfig.token } );
+      //  console.log('====================================');
+      //  console.log(dangerLevel);
+      //  console.log('====================================');
+    // const dangerLevel = 2
     if(!await suspectService.findSuspectById(profile._id)){
         await suspectService.createSuspect({
             _id: profile._id,
