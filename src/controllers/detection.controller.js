@@ -35,11 +35,12 @@ const addDetection = async (req, res) => {
       req.body.license_plate
     );
     const url = `${hostConfig.dangerLevelById}/${profile._id}`;
-    // const dangerLevel = await axios.get("https://" + url, { headers: { 'authorize': hostConfig.token } })
-    //   console.log('====================================');
-    //   console.log(dangerLevel);
-    //   console.log('====================================');
-    const dangerLevel = 3
+    const dangerLevel = await axios.get("https://" + url, { 
+      headers: { 'Authorization': hostConfig.token } })
+      console.log('====================================');
+      console.log(dangerLevel);
+      console.log('====================================');
+    //const dangerLevel = 3
 
     await suspectService.createSuspect({
       _id: profile._id,

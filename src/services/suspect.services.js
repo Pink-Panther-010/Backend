@@ -30,3 +30,12 @@ exports.findAllSuspects = async () => {
       throw new Error(err.message);
     }
   }
+
+  exports.updateSuspect = async (id, dangerLevel) => {
+    try{
+    await suspectModel.findOneAndUpdate({_id: id},{danger_level: dangerLevel});
+    }
+    catch(err) {
+      throw new Error(err.message);
+    }
+  }
