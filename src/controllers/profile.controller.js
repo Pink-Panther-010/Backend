@@ -10,7 +10,7 @@ const getProfileById = async(req, res) => {
 
 const getProfileByLicenseNumber = async (req, res) => {
     try{
-    res.send( await profileService.getProfileByLicensePlate(req.params.licenceNumber));
+    res.send( await profileService.getProfileByLicensePlate(req.params.licenseNumber));
     }catch(err){
         res.status(500).send(err);
     }

@@ -18,7 +18,11 @@ catch(err){
 };
 
 exports.getProfileByLicensePlate = async (licensePlate) => {
-  const respond = await Profile.find(licensePlate ? { license_plates: { $in: [licensePlate]} } : {})
+  console.log('====================================');
+  console.log(licensePlate);
+  console.log('====================================');
+  const query = licensePlate ? {license_plates:licensePlate} : {}
+  const respond = await Profile.find(query)
   if( respond === undefined) {
     throw new Error("Profile not found");
   }
