@@ -5,16 +5,24 @@ const suspectService = require('../services/suspect.services.js');
 const hostConfig = require('../config/host.config');
 
 const getAllDetections = async (req, res) => {
+    let offset = parseInt(req.params.offset);
+        if(!offset) {
+            offset = 0;
+        }
     try {
-        res.send(await detectionService.getAllDetections());
+        res.send(await detectionService.getAllDetections(offset));
     } catch (err) {
         res.status(500).send(`There was a problem - ${err.message}`)
     }
 }
 
 const getDetectionsById = async (req, res) => {
+    let offset = parseInt(req.params.offset);
+        if(!offset) {
+            offset = 0;
+        }
     try {
-        res.send(await detectionService.getDetectionsById(req.params.id));
+        res.send(await detectionService.getDetectionsById(req.params.id, offset));
     } catch (err) {
         res.status(500).send(`There was a problem - ${err.message}`)
     }
