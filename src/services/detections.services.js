@@ -3,7 +3,7 @@ const AMOUNT = 5;
 
 exports.getAllDetections = async (offset) => {
     const data = await detectionModel.find({}).skip(AMOUNT * offset)
-    .limit( AMOUNT ).sort({ time: '-date'});;
+    .limit( AMOUNT ).sort({ time: -1});;
 
     if(data === undefined) {
         throw new Error('No detections were found');
@@ -19,8 +19,8 @@ exports.createDetection = async (data) => {
 };
 
 exports.getDetectionsById = async (id, offset) => {
-    const data = await detectionModel.findById({_id: id}).skip(AMOUNT * offset)
-    .limit( AMOUNT ).sort({ time: '-date' });
+    const data = await detectionModel.find({id: id}).skip(AMOUNT * offset)
+    .limit( AMOUNT ).sort({ time: -1 });
 
     if(data === undefined) {
         throw new Error(`No detections were found for ID ${id}`);

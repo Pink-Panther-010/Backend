@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 const connectionMedori = mongoose.createConnection(dbMedori.url);
 
 var detectionsSchema = new Schema({
-    _id: String,
+    id: String,
     detectedLicense_plate: String,
     xLocation: Number,
     yLocation: Number,
