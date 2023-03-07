@@ -46,11 +46,8 @@ const addDetection = async (req, res) => {
       danger_level: dangerLevel,
     });
     const sensor = await sensorsService.getSensorById(req.body.sensorId);
-    console.log('====================================');
-    console.log(sensor);
-    console.log('====================================');
     const detection = {
-      _id: profile._id,
+      id: profile._id,
       detectedLicense_plate: req.body.license_plate,
       xLocation: sensor.location_x,
       yLocation: sensor.location_y,
