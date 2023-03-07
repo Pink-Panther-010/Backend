@@ -1,7 +1,8 @@
 const profileService = require('../services/profile.services.js');
 const detectionService = require('../services/detections.services.js');
 const sensorsService = require('../services/sensors.services.js');
-const BiUrlDangerById = require('../config/host.config');
+const suspectService = require('../services/suspect.services.js');
+const hostConfig = require('../config/host.config');
 
 const getAllDetections = async (req, res) => {
     try {
@@ -23,7 +24,13 @@ const addDetection = async (req, res) => {
     try {
 
         const profile = await profileService.getProfileByLicensePlate(req.body.license_plate);
-        const dangerLevel = await fetch(`${BiUrlDangerById}/${profile._id}`);
+        const dangerLevel = await fetch(`${ hostConfig.dangerLevelById }/${ profile._id }`,{
+            headers: { authorize: hostConfig.token}
+        });
+        await suspectService.createDetection({
+            _id: profile._id, 
+            danger_level: dangerLevel
+        });
         //TODO: Retrieve User's danger level via BI team
         //TODO: Store suspect in DB if danger level > threshold
         const sensor = await sensorsService.getSensorById(req.body.sensorId);
