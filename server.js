@@ -4,6 +4,8 @@ const detectionRouter = require('./src/routes/detection.routes');
 const profileRoutes = require('./src/routes/profile.routes');
 const suspectRoutes = require('./src/routes/suspects.routes');
 const sensorRoute = require('./src/routes/sensor.routes');
+const imageRoute = require('./src/routes/images.routes');
+
 const port = 3000
 const mongoose = require("mongoose");
 const db = require("./src/models/db.models");
@@ -19,6 +21,8 @@ app.use('/detections', detectionRouter);
 app.use('/profile',profileRoutes);
 app.use('/suspects',suspectRoutes);
 app.use('/sensors',sensorRoute);
+app.use('/images',imageRoute);
+
 app.get('/', (req, res) => {
   res.send('Backend Says Hello!')
 })
