@@ -22,7 +22,7 @@ exports.getProfileByLicensePlate = async (licensePlate) => {
   console.log(licensePlate);
   console.log('====================================');
   const query = licensePlate ? {license_plates:licensePlate} : {}
-  const respond = await Profile.find(query)
+  const respond = await Profile.findOne(query)
   if( respond === undefined) {
     throw new Error("Profile not found");
   }
