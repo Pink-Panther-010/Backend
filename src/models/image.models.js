@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 
 const connection =  mongoose.createConnection(db.url);
-var SensorSchema = new Schema({
-    url: String,
-    imageByte: String,
-}, {collection: 'images'});
+var ImageSchema = new Schema({
+    _id: String,
+    bytes: String,
+}, {collection: 'pictures'});
 
 
-module.exports = connection.model('images', SensorSchema)
+module.exports = connection.model('pictures', ImageSchema)
