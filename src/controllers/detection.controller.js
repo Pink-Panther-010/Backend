@@ -7,9 +7,9 @@ const axios = require("axios");
 
 const getAllDetections = async (req, res) => {
     let offset = parseInt(req.params.offset);
-        if(!offset) {
-            offset = 0;
-        }
+    if (!offset) {
+        offset = 0;
+    }
     try {
         res.send(await detectionService.getAllDetections(offset));
     } catch (err) {
@@ -19,9 +19,9 @@ const getAllDetections = async (req, res) => {
 
 const getDetectionsById = async (req, res) => {
     let offset = parseInt(req.params.offset);
-        if(!offset) {
-            offset = 0;
-        }
+    if (!offset) {
+        offset = 0;
+    }
     try {
         res.send(await detectionService.getDetectionsById(req.params.id, offset));
     } catch (err) {
@@ -67,7 +67,7 @@ const addDetection = async (req, res) => {
 };
 
 module.exports = {
-  getAllDetections,
-  getDetectionsById,
-  addDetection,
+    getAllDetections,
+    getDetectionsById,
+    addDetection,
 };
