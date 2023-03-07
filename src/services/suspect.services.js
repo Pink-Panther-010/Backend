@@ -12,7 +12,7 @@ exports.findAllSuspects = async () => {
 
 
   exports.findSuspectById = async (id) => {
-   const data = await suspectModel.findById(id)
+   const data = await suspectModel.findOne({_id: id})
    if(data === undefined) {
     throw new Error("No suspect found");
    }
