@@ -4,6 +4,7 @@ const sensorsService = require("../services/sensors.services.js");
 const suspectService = require("../services/suspect.services.js");
 const hostConfig = require("../config/host.config");
 const superagent = require("superagent");
+const e = require("express");
 
 const getAllDetections = async (req, res) => {
     let offset = parseInt(req.params.offset);
@@ -31,9 +32,17 @@ const getDetectionsById = async (req, res) => {
 
 const addDetection = async (req, res) => {
   try {
+    if(req.body.license_plate) {
     const profile = await profileService.getProfileByLicensePlate(
       req.body.license_plate
     );
+    }
+    else if(req.body.id) {
+      const profile = await profileService.getProfileById(req.body.id);
+    }
+    else {
+      throw new Error("Please provide either a license plate or an id");
+    }
     // const url = `${hostConfig.dangerLevelById}/${profile._id}`;
     // const dangerLevel = await superagent.get("https://" + url).set('authorize',hostConfig.token)
     // console.log('========================');
