@@ -34,16 +34,16 @@ const addDetection = async (req, res) => {
     const profile = await profileService.getProfileByLicensePlate(
       req.body.license_plate
     );
-    const url = `${hostConfig.dangerLevelById}/${profile._id}`;
-    const dangerLevel = await superagent.get("https://" + url).set('authorize',hostConfig.token)
-    console.log('====================================');
-    console.log(dangerLevel.body);
-    console.log('====================================');
+    // const url = `${hostConfig.dangerLevelById}/${profile._id}`;
+    // const dangerLevel = await superagent.get("https://" + url).set('authorize',hostConfig.token)
+    // console.log('========================');
+    // console.log(dangerLevel.body);
+    // console.log('====================================');
       //  headers: ({ 'Authorization': hostConfig.token } );
       //  console.log('====================================');
       //  console.log(dangerLevel);
       //  console.log('====================================');
-    // const dangerLevel = 2
+     const dangerLevel = 2
     if(!await suspectService.findSuspectById(profile._id)){
         await suspectService.createSuspect({
             _id: profile._id,
@@ -61,6 +61,7 @@ const addDetection = async (req, res) => {
       xLocation: sensor.location_x,
       yLocation: sensor.location_y,
       time: new Date(),
+      place_name: sensor.place_name
     };
     await detectionService.createDetection(detection);
     res.sendStatus(201);
