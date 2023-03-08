@@ -10,7 +10,8 @@ var detectionsSchema = new Schema({
     detectedLicense_plate: String,
     xLocation: Number,
     yLocation: Number,
-    time: Date
+    time: Date,
+    place_name: String
 
 }, { collection: 'detections' });
 

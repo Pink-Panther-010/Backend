@@ -2,7 +2,7 @@ const Profile = require("../models/profile.models");
 const mongoose = require('mongoose')
 exports.getProfileById = async (id) => {
   try{
-  const respond = await Profile.find({_id: id})
+  const respond = await Profile.findOne({_id: id})
   if (respond === undefined) {
     throw new Error("Profile not found");
   }
