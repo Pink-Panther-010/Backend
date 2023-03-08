@@ -79,8 +79,52 @@ const addDetection = async (req, res) => {
   }
 };
 
+
+const detectionFromBodel = async (data) => {
+  try {
+    if(data.plate_number) {
+    const profile = await profileService.getProfileByLicensePlate(
+      data.plate_number
+    );
+    }
+    else if(data.id_number) {
+      const profile = await profileService.getProfileById(data.id_number);
+    }
+    else {
+      throw new Error("Please provide either a license plate or an id");
+    }
+    const url = `${hostConfig.dangerLevelById}/${data.id_number}`;
+    const dangerLevel = await superagent.get("https://" + url).set('authorize',hostConfig.token)
+    //  const dangerLevel = 2
+    if(!await suspectService.findSuspectById(profile._id)){
+        await suspectService.createSuspect({
+            _id: profile._id,
+            danger_level: dangerLevel,
+          });
+    }
+    else{
+        await suspectService.updateSuspect(profile._id,dangerLevel);
+    }
+
+    const sensor = await sensorsService.getSensorById(data.sensor_id);
+    const detection = {
+      id: profile._id,
+      detectedLicense_plate: data.license_plate?data.license_plate:"No license plate detected",
+      xLocation: sensor.location_x,
+      yLocation: sensor.location_y,
+      time: new Date(),
+      place_name: sensor.place_name
+    };
+    await detectionService.createDetection(detection);
+    res.sendStatus(201);
+  } catch (err) {
+    res.status(500).send(`There was a problem - ${err.message}`);
+  }
+};
+
 module.exports = {
     getAllDetections,
     getDetectionsById,
     addDetection,
+    detectionFromBodel,
 };
