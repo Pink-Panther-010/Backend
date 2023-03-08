@@ -20,7 +20,15 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  console.log(`${socket.id} user connected`);
+
+  socket.on("detection", (data) => {
+    socket.broadcast.emit("detection", data);
+  })
+
+  socket.on('disconnect', () => {
+    console.log(`${socket.id} user disconnected`);
+  });
 });
 
 app.use(express.json())
