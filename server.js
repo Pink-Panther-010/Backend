@@ -14,13 +14,16 @@ const dbMedori = require("./src/models/dbMedori.models");
 var cors = require('cors');
 app.use(cors());
 
+var debug = require("debug")("backend:server");
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
   },
 });
 
-server.listen(port);
+server.listen(port, () => {
+  console.log(port);
+});
 server.on("error", onError);
 
 io.on('connection', (socket) => {
@@ -60,9 +63,37 @@ module.exports = {
 
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-  
-})
+app.set("port", port)
+
+
+function onError(error) {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
+}
+
+server.on("listening", onListening);
 
 //ft1

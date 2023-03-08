@@ -4,8 +4,6 @@ const sensorsService = require("../services/sensors.services.js");
 const suspectService = require("../services/suspect.services.js");
 const hostConfig = require("../config/host.config");
 const superagent = require("superagent");
-const e = require("express");
-const { splitVendorChunkPlugin } = require("vite");
 
 const getAllDetections = async (req, res) => {
     let offset = parseInt(req.params.offset);
