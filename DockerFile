@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node
 
 COPY ./src ./src
 COPY server.js ./

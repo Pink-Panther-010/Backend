@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 const connection =  mongoose.createConnection(db.url);
 var ImageSchema = new Schema({
     _id: String,
-    bytes: String,
+    bytes: Array,
 }, {collection: 'pictures'});
 
 
