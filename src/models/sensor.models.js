@@ -8,7 +8,8 @@ const connectionMadori =  mongoose.createConnection(dbMedori.url);
 var SensorSchema = new Schema({
     _id: String,
     location_x: Number,
-    location_y: Number
+    location_y: Number,
+    place_name: String
 }, {collection: 'sensors'});
 
 
