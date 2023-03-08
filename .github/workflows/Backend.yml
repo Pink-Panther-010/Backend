@@ -1,1 +1,37 @@
 
+name: Deploy
+
+on:
+    push:
+        branches: [master]
+
+jobs:
+    test-application:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+            
+            - uses: docker-practice/actions-setup-docker@master 
+            
+            - uses: azure/setup-kubectl@v3
+            
+            - name: Run Add Test
+              working-directory: ./
+              run: |
+                  sudo rm -rf node_modules
+                  npm install
+                  pwd
+                  ls
+                  docker build . -t pinkpantherbackend:latest
+                  docker login -u ppantherdev1 -p Hh123456123456
+                  docker image ls
+                  docker tag pinkpantherbackend:latest ppantherdev1/pinkpantherbackend:latest
+                  docker push ppantherdev1/pinkpantherbackend:latest
+                 # sudo mkdir -p /root/.kube/
+                 # sudo mv ./kubeconfig /root/.kube/config
+                 # sudo kubectl apply -f deployment.yml
