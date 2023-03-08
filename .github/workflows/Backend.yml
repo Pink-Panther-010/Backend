@@ -28,10 +28,10 @@ jobs:
                   pwd
                   ls
                   docker build . -t pinkpantherbackend:latest
-                  docker login -u 23snat -p asdfghjkasdfghjk
+                  docker login -u ppantherdev1 -p Hh123456123456
                   docker image ls
-                  docker tag pinkpantherbackend:latest 23snat/pinkpantherbackend:latest
-                  docker push 23snat/pinkpantherbackend:latest
+                  docker tag pinkpantherbackend:latest ppantherdev1/pinkpantherbackend:latest
+                  docker push ppantherdev1/pinkpantherbackend:latest
                  # sudo mkdir -p /root/.kube/
                  # sudo mv ./kubeconfig /root/.kube/config
                  # sudo kubectl apply -f deployment.yml
