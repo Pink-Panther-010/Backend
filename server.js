@@ -5,13 +5,23 @@ const profileRoutes = require('./src/routes/profile.routes');
 const suspectRoutes = require('./src/routes/suspects.routes');
 const sensorRoute = require('./src/routes/sensor.routes');
 const imageRoute = require('./src/routes/images.routes');
-
+const http = require('http');
+const server = http.createServer(app);
 const port = 3000
 const mongoose = require("mongoose");
 const db = require("./src/models/db.models");
 const dbMedori = require("./src/models/dbMedori.models");
 var cors = require('cors');
 app.use(cors());
+
+
+
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
 
 app.use(express.json())
 // app.use(express.urlencoded())
