@@ -18,6 +18,13 @@ catch(err){
 };
 
 exports.getProfileByLicensePlate = async (licensePlate) => {
+  if(!licensePlate.includes("-")){
+    licensePlate = licensePlate.replace(/(\d+)/g, function (_, num){
+      return '-' + num + '-';
+  });
+  licensePlate = licensePlate.trim().slice(1, -1);
+
+}
   const query = licensePlate ? {license_plates:licensePlate} : {}
   const respond = await Profile.find(query)
   if( respond === undefined) {
