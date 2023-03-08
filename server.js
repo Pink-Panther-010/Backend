@@ -5,7 +5,7 @@ const profileRoutes = require('./src/routes/profile.routes');
 const suspectRoutes = require('./src/routes/suspects.routes');
 const sensorRoute = require('./src/routes/sensor.routes');
 const imageRoute = require('./src/routes/images.routes');
-
+const socketService = require('./src/services/socket.service')
 const port = 3000
 const mongoose = require("mongoose");
 const db = require("./src/models/db.models");
@@ -40,6 +40,7 @@ module.exports = {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+  socketService.initializeSocket();
 })
 
 //ft1

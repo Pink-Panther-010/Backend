@@ -18,9 +18,6 @@ catch(err){
 };
 
 exports.getProfileByLicensePlate = async (licensePlate) => {
-  console.log('====================================');
-  console.log(licensePlate);
-  console.log('====================================');
   const query = licensePlate ? {license_plates:licensePlate} : {}
   const respond = await Profile.find(query)
   if( respond === undefined) {
