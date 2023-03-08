@@ -14,10 +14,14 @@ const dbMedori = require("./src/models/dbMedori.models");
 var cors = require('cors');
 app.use(cors());
 
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
-
-const { Server } = require("socket.io");
-const io = new Server(server);
+server.listen(port);
+server.on("error", onError);
 
 io.on('connection', (socket) => {
   console.log(`${socket.id} user connected`);
