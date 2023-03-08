@@ -5,6 +5,7 @@ const suspectService = require("../services/suspect.services.js");
 const hostConfig = require("../config/host.config");
 const superagent = require("superagent");
 const e = require("express");
+const { splitVendorChunkPlugin } = require("vite");
 
 const getAllDetections = async (req, res) => {
     let offset = parseInt(req.params.offset);
@@ -31,14 +32,17 @@ const getDetectionsById = async (req, res) => {
 }
 
 const addDetection = async (req, res) => {
+  let profile;
   try {
     if(req.body.license_plate) {
-    const profile = await profileService.getProfileByLicensePlate(
+       profile = (await profileService.getProfileByLicensePlate(
       req.body.license_plate
-    );
+    ))[0]
+    
+    
     }
     else if(req.body.id) {
-      const profile = await profileService.getProfileById(req.body.id);
+      profile = await profileService.getProfileById(req.body.id);
     }
     else {
       throw new Error("Please provide either a license plate or an id");
@@ -53,7 +57,11 @@ const addDetection = async (req, res) => {
       //  console.log(dangerLevel);
       //  console.log('====================================');
      const dangerLevel = 2
+ 
     if(!await suspectService.findSuspectById(profile._id)){
+      console.log('====================================');
+      console.log("sdsd");
+      console.log('====================================');
         await suspectService.createSuspect({
             _id: profile._id,
             danger_level: dangerLevel,
@@ -62,7 +70,6 @@ const addDetection = async (req, res) => {
     else{
         await suspectService.updateSuspect(profile._id,dangerLevel);
     }
-
     const sensor = await sensorsService.getSensorById(req.body.sensorId);
     const detection = {
       id: profile._id,
