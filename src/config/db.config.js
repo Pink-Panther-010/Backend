@@ -1,3 +1,3 @@
 module.exports = {
-    url: 'mongodb://karnafim-best:asdfghjkasdfghjk@localhost:27107/medori?retryWrites=true&w=majority',
+    url: 'mongodb://karnafim-best:asdfghjkasdfghjk@localhost:27107/test?retryWrites=true&w=majority',
   };
