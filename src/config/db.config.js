@@ -1,3 +1,5 @@
 module.exports = {
-    url: 'mongodb+srv://Sampan96:Rc5ZhVmSRYUZFs94@cluster0.gjr1yzm.mongodb.net/test?retryWrites=true&w=majority'
+    url: 'mongodb://localhost:27107/test?retryWrites=true&w=majority',
+    user:'karnafim-best',
+    pwd:'asdfghjkasdfghjk'
   };
